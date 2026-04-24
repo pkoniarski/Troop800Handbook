@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troop 800 — New-Parent Handbook</title>
+<style>
+  :root {
+    --scout-green: #00693c;
+    --scout-dark: #003f24;
+    --scout-gold: #c8a24b;
+    --scout-tan: #d4b98a;
+    --scout-khaki: #f4ecd8;
+    --scout-navy: #1a3a5c;
+    --ink: #222;
+    --muted: #555;
+    --card: #ffffff;
+    --page: #fbf8f0;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--page);
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4 { font-family: "Trebuchet MS", "Helvetica Neue", Arial, sans-serif; }
+  a { color: var(--scout-green); }
+
+  /* ---------- SPLASH ---------- */
+  .splash {
+    min-height: 100vh;
+    background:
+      linear-gradient(135deg, rgba(0,63,36,0.92) 0%, rgba(0,105,60,0.85) 60%, rgba(26,58,92,0.9) 100%),
+      repeating-linear-gradient(45deg, #0a4 0 2px, transparent 2px 40px);
+    color: #fff;
+    padding: 40px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .splash::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 20%, rgba(200,162,75,0.25), transparent 60%);
+    pointer-events: none;
+  }
+  .fleur-medallion {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f4ecd8 0%, #d4b98a 100%);
+    border: 4px solid var(--scout-gold);
+    box-shadow:
+      0 6px 18px rgba(0,0,0,0.5),
+      inset 0 0 20px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+  }
+  .fleur-medallion img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .troop-banner {
+    margin-top: -18px;
+    margin-bottom: 18px;
+    background: linear-gradient(180deg, #a82020 0%, #8b1a1a 100%);
+    color: var(--scout-khaki);
+    border: 2px solid var(--scout-gold);
+    padding: 6px 28px;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  }
+  .splash h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 2px 3px 8px rgba(0,0,0,0.5);
+    color: var(--scout-gold);
+  }
+  .splash .subtitle {
+    font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+    margin: 10px 0 6px;
+    opacity: 0.95;
+  }
+  .splash .tagline {
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.85;
+    margin-bottom: 30px;
+  }
+  .splash .charter-info {
+    background: rgba(0,0,0,0.25);
+    border-left: 4px solid var(--scout-gold);
+    padding: 15px 25px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 4px;
+  }
+  .splash .charter-info strong { color: var(--scout-gold); }
+
+  .bp-quote-hero {
+    margin-top: 30px;
+    max-width: 700px;
+    padding: 20px 30px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+  .bp-quote-hero .attr {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    color: var(--scout-gold);
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+  }
+
+  /* ---------- NAV TILES ---------- */
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+    width: 100%;
+    margin: 40px auto 0;
+    perspective: 1000px;
+  }
+  .nav-tile {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0,105,60,0.35) 0%, rgba(26,58,92,0.45) 100%);
+    border: 2px solid rgba(200,162,75,0.7);
+    color: #fff;
+    padding: 20px 18px 20px 60px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: transform 0.35s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.3s, border-color 0.3s;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    text-align: left;
+    backdrop-filter: blur(4px);
+    overflow: hidden;
+    box-shadow:
+      0 4px 12px rgba(0,0,0,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .nav-tile:focus-visible {
+    outline: 3px solid var(--scout-gold);
+    outline-offset: 3px;
+  }
+  /* Shimmer sweep */
+  .nav-tile::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%; height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255,255,255,0.25) 50%,
+      transparent 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.7s ease;
+    pointer-events: none;
+  }
+  /* Gold corner flare */
+  .nav-tile::after {
+    content: "";
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, rgba(200,162,75,0.6) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .nav-tile:hover {
+    transform: translateY(-6px) scale(1.04) rotateX(3deg);
+    border-color: var(--scout-gold);
+    box-shadow:
+      0 14px 28px rgba(0,0,0,0.45),
+      0 0 22px rgba(200,162,75,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .nav-tile:hover::before { left: 125%; }
+  .nav-tile:hover::after { opacity: 1; }
+  .nav-tile:active { transform: translateY(-2px) scale(1.01); }
+
+  .nav-tile .icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--scout-gold) 0%, #e8c574 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    color: var(--scout-dark);
+    box-shadow:
+      0 2px 6px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.5);
+    transition: transform 0.4s cubic-bezier(.2,.9,.3,1.5);
+  }
+  .nav-tile:hover .icon {
+    transform: translateY(-50%) rotate(360deg) scale(1.15);
+  }
+  .nav-tile .num {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--scout-gold);
+    letter-spacing: 3px;
+    font-weight: 900;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+  .nav-tile .title {
+    display: block;
+    font-size: 1.05rem;
+    margin-top: 4px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    line-height: 1.25;
+  }
+
+  /* Staggered entrance animation */
+  @keyframes tileIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.9); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .nav-tile {
+    animation: tileIn 0.5s ease-out backwards;
+  }
+  .nav-tile:nth-child(1)  { animation-delay: 0.05s; }
+  .nav-tile:nth-child(2)  { animation-delay: 0.10s; }
+  .nav-tile:nth-child(3)  { animation-delay: 0.15s; }
+  .nav-tile:nth-child(4)  { animation-delay: 0.20s; }
+  .nav-tile:nth-child(5)  { animation-delay: 0.25s; }
+  .nav-tile:nth-child(6)  { animation-delay: 0.30s; }
+  .nav-tile:nth-child(7)  { animation-delay: 0.35s; }
+  .nav-tile:nth-child(8)  { animation-delay: 0.40s; }
+  .nav-tile:nth-child(9)  { animation-delay: 0.45s; }
+  .nav-tile:nth-child(10) { animation-delay: 0.50s; }
+  .nav-tile:nth-child(11) { animation-delay: 0.55s; }
+  .nav-tile:nth-child(12) { animation-delay: 0.60s; }
+  .nav-tile:nth-child(13) { animation-delay: 0.65s; }
+  .nav-tile:nth-child(14) { animation-delay: 0.70s; }
+  .nav-tile:nth-child(15) { animation-delay: 0.75s; }
+  .nav-tile:nth-child(16) { animation-delay: 0.80s; }
+  .nav-tile:nth-child(17) { animation-delay: 0.85s; }
+
+  .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ---------- CONTENT ---------- */
+  .content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  section.chapter {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border-top: 5px solid var(--scout-green);
+  }
+  section.chapter h2 {
+    color: var(--scout-dark);
+    border-bottom: 2px solid var(--scout-gold);
+    padding-bottom: 8px;
+    margin-top: 0;
+    font-size: 1.8rem;
+  }
+  section.chapter h3 {
+    color: var(--scout-green);
+    margin-top: 28px;
+    font-size: 1.25rem;
+  }
+  section.chapter h4 {
+    color: var(--scout-navy);
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+  }
+
+  .callout {
+    background: var(--scout-khaki);
+    border-left: 5px solid var(--scout-gold);
+    padding: 14px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .callout strong { color: var(--scout-dark); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95rem;
+  }
+  th {
+    background: var(--scout-green);
+    color: #fff;
+    text-align: left;
+    padding: 10px 12px;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e5e0cf;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #faf6e9; }
+
+  ul, ol { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---------- BP QUOTES ---------- */
+  .bp-quote {
+    background: linear-gradient(135deg, #f4ecd8 0%, #ead9b2 100%);
+    border: 2px solid var(--scout-gold);
+    border-radius: 8px;
+    padding: 24px 30px;
+    margin: 40px auto;
+    max-width: 860px;
+    position: relative;
+    font-style: italic;
+    color: var(--scout-dark);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+  .bp-quote::before {
+    content: "\201C";
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 5rem;
+    color: var(--scout-gold);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .bp-quote .attr {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    color: var(--scout-green);
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* ---------- BACK TO TOP ---------- */
+  .back-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--scout-green);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-size: 1.2rem;
+    transition: background 0.2s;
+    z-index: 100;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+  .back-top:hover { background: var(--scout-gold); color: var(--scout-dark); }
+
+  /* ---------- SECTION BACK BUTTON ---------- */
+  .section-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 10px 20px 10px 16px;
+    background: linear-gradient(135deg, var(--scout-green) 0%, var(--scout-dark) 100%);
+    color: var(--scout-gold);
+    border: 2px solid var(--scout-gold);
+    border-radius: 30px;
+    font-family: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  }
+  .section-back:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--scout-gold) 0%, #e8c574 100%);
+    color: var(--scout-dark);
+    box-shadow: 0 6px 16px rgba(200,162,75,0.4);
+  }
+  .section-back .arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+  .section-back:hover .arrow {
+    transform: translateX(-4px);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--scout-dark);
+    color: var(--scout-khaki);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  footer .motto {
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 1.3rem;
+    color: var(--scout-gold);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 600px) {
+    section.chapter { padding: 24px 20px; }
+    .content { padding: 30px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== SPLASH ========== -->
+<header class="splash" id="top">
+  <div class="fleur-medallion">
+    <img src="fleur.png" alt="Troop 800 fleur-de-lis emblem">
+  </div>
+  <div class="troop-banner">TROOP 800</div>
+  <h1>TROOP 800</h1>
+  <div class="subtitle">Chula Vista, California</div>
+  <div class="tagline">A New-Parent Handbook for Scouts BSA</div>
+
+  <div class="charter-info">
+    <strong>Chartered by</strong> Chula Vista Presbyterian Church<br>
+    940 Hilltop Drive &bull; Chula Vista, CA 91911<br>
+    <strong>Meetings:</strong> Tuesdays at 6:30 pm &bull; <strong>Council:</strong> San Diego-Imperial (SDIC)
+  </div>
+
+  <div class="bp-quote-hero">
+    "A Scout is never taken by surprise; he knows exactly what to do when anything unexpected happens."
+    <span class="attr">— Robert Baden-Powell, Founder of Scouting</span>
+  </div>
+
+  <nav class="nav-grid" aria-label="Handbook sections">
+    <button type="button" class="nav-tile" data-target="welcome"><span class="icon">&#x1F44B;</span><span class="title">Welcome</span></button>
+    <button type="button" class="nav-tile" data-target="about"><span class="icon">&#x2605;</span><span class="title">About Scouts BSA</span></button>
+    <button type="button" class="nav-tile" data-target="org"><span class="icon">&#x1F9ED;</span><span class="title">Troop Organization</span></button>
+    <button type="button" class="nav-tile" data-target="first30"><span class="icon">&#x2713;</span><span class="title">Your First 30 Days</span></button>
+    <button type="button" class="nav-tile" data-target="meetings"><span class="icon">&#x1F4C5;</span><span class="title">Meetings &amp; Calendar</span></button>
+    <button type="button" class="nav-tile" data-target="uniform"><span class="icon">&#x1F454;</span><span class="title">The Uniform</span></button>
+    <button type="button" class="nav-tile" data-target="outdoor"><span class="icon">&#x26FA;</span><span class="title">The Outdoor Program</span></button>
+    <button type="button" class="nav-tile" data-target="advancement"><span class="icon">&#x1F3C5;</span><span class="title">Advancement &amp; Ranks</span></button>
+    <button type="button" class="nav-tile" data-target="safety"><span class="icon">&#x1F6E1;</span><span class="title">Safeguarding Youth</span></button>
+    <button type="button" class="nav-tile" data-target="costs"><span class="icon">&#x1F4B0;</span><span class="title">What It Costs</span></button>
+    <button type="button" class="nav-tile" data-target="parent-role"><span class="icon">&#x1F46A;</span><span class="title">Your Role as a Parent</span></button>
+    <button type="button" class="nav-tile" data-target="register"><span class="icon">&#x270D;</span><span class="title">Registering as a Volunteer</span></button>
+    <button type="button" class="nav-tile" data-target="training"><span class="icon">&#x1F393;</span><span class="title">Training Pathway</span></button>
+    <button type="button" class="nav-tile" data-target="comms"><span class="icon">&#x1F4EC;</span><span class="title">Troop Communications</span></button>
+    <button type="button" class="nav-tile" data-target="faq"><span class="icon">&#x2753;</span><span class="title">FAQ</span></button>
+    <button type="button" class="nav-tile" data-target="glossary"><span class="icon">&#x1F4D6;</span><span class="title">Glossary</span></button>
+    <button type="button" class="nav-tile" data-target="contacts"><span class="icon">&#x1F4DE;</span><span class="title">Key Contacts</span></button>
+  </nav>
+
+  <div class="scroll-hint">&#x2193; Scroll to begin &#x2193;</div>
+</header>
+
+<!-- ========== CONTENT ========== -->
+<main class="content">
+
+<!-- 1. WELCOME -->
+<section class="chapter" id="welcome">
+  <h2>1. Welcome</h2>
+  <p>Congratulations &mdash; your child is joining Troop 800, Chula Vista! Troop 800 is a coed Scouts BSA troop chartered by Chula Vista Presbyterian Church (CVPC) at 940 Hilltop Drive. Whether your Scout is crossing over from Cub Scouts or joining for the first time, the troop is about to become a second family of sorts: a place to build friendships, grow into leadership, get outside, and learn skills that will serve them for life.</p>
+  <p>This handbook is meant to demystify the experience for you, the parent or guardian. Read through once, then keep it as a reference. If something here does not match what the troop is actually doing in a given week, defer to the troop &mdash; every troop runs a little differently within the same national framework.</p>
+  <div class="callout"><strong>Big Idea.</strong> Scouts BSA is youth-led. The Scouts run the meetings and plan the program with guidance from trained adult leaders. Your role as a parent is to support from the sideline, not to direct from the field.</div>
+  <div class="callout"><strong>Troop 800 Expectation.</strong> We ask that at least one parent or guardian from every family register as an adult volunteer. California has extra steps for adult registration (AB 506) &mdash; plan on about 3&ndash;4 hours of training plus a Live Scan fingerprinting appointment. See Section 12 for the full walkthrough.</div>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<div class="bp-quote">
+  Scouting is a game with a purpose.
+  <span class="attr">&mdash; Robert Baden-Powell</span>
+</div>
+
+<!-- 2. ABOUT -->
+<section class="chapter" id="about">
+  <h2>2. About Scouts BSA</h2>
+  <p>Scouts BSA is the flagship program of Scouting America (the national organization formerly known as the Boy Scouts of America) for youth ages 11 through 17. Scouts are organized into troops, which are divided into smaller patrols of about 6&ndash;8 Scouts. Troops meet weekly and typically camp one weekend a month, plus a week of summer camp each year.</p>
+
+  <h3>The Aims of Scouting</h3>
+  <ul>
+    <li>Character development</li>
+    <li>Citizenship training</li>
+    <li>Leadership development</li>
+    <li>Personal fitness</li>
+  </ul>
+
+  <h3>The Methods of Scouting</h3>
+  <p>The program uses eight methods to achieve its aims: the ideals (Scout Oath and Law), the patrol method, the outdoors, advancement, association with adults, personal growth, leadership development, and the uniform.</p>
+
+  <h3>The Scout Oath</h3>
+  <p>"On my honor I will do my best to do my duty to God and my country and to obey the Scout Law; to help other people at all times; to keep myself physically strong, mentally awake, and morally straight."</p>
+
+  <h3>The Scout Law</h3>
+  <p>A Scout is Trustworthy, Loyal, Helpful, Friendly, Courteous, Kind, Obedient, Cheerful, Thrifty, Brave, Clean, and Reverent.</p>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 3. ORGANIZATION -->
+<section class="chapter" id="org">
+  <h2>3. How the Troop Is Organized</h2>
+
+  <h3>Adult Roles</h3>
+  <table>
+    <thead><tr><th>Role</th><th>What They Do</th></tr></thead>
+    <tbody>
+      <tr><td>Scoutmaster</td><td>Primary adult leader who works directly with the Scouts and mentors the youth leaders. This is the person your Scout will interact with most.</td></tr>
+      <tr><td>Assistant Scoutmasters</td><td>Adult volunteers who support the Scoutmaster, often specializing in specific skill areas (e.g., camping, first aid, new-Scout mentoring).</td></tr>
+      <tr><td>Committee Chair</td><td>Leads the troop committee, which handles the business side: finances, registration, transportation, advancement records, and equipment.</td></tr>
+      <tr><td>Committee Members</td><td>Parent volunteers who support specific functions &mdash; treasurer, advancement chair, outdoor/activities chair, etc.</td></tr>
+      <tr><td>Chartered Organization Representative</td><td>Liaison to the sponsoring organization (church, civic club, school PTA, etc.) that owns and supports the troop.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Youth Leadership</h3>
+  <ul>
+    <li><strong>Senior Patrol Leader (SPL)</strong> &mdash; The top youth leader. Runs troop meetings and leads the Patrol Leaders' Council.</li>
+    <li><strong>Assistant Senior Patrol Leader (ASPL)</strong> &mdash; Supports the SPL and often covers a specific area.</li>
+    <li><strong>Patrol Leader (PL)</strong> &mdash; Leads a patrol of about 6&ndash;8 Scouts.</li>
+    <li><strong>Assistant Patrol Leader</strong> &mdash; Supports the PL and steps in when needed.</li>
+    <li><strong>Troop Guide</strong> &mdash; An older Scout assigned to help the newest Scouts learn the ropes.</li>
+    <li><strong>Other positions</strong> &mdash; Scribe, Quartermaster, Historian, Chaplain's Aide, Bugler, Librarian, Order of the Arrow Representative, Instructor, Den Chief, Junior Assistant Scoutmaster.</li>
+  </ul>
+  <div class="callout"><strong>Why it matters.</strong> Troops intentionally let Scouts make (and learn from) real decisions &mdash; including decisions that are imperfect. Resist the urge to solve every problem for your Scout; that is part of the program working.</div>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<div class="bp-quote">
+  When you want a thing done, "don't do it yourself" is a good motto for Scoutmasters.
+  <span class="attr">&mdash; Robert Baden-Powell</span>
+</div>
+
+<!-- 4. FIRST 30 DAYS -->
+<section class="chapter" id="first30">
+  <h2>4. Your First 30 Days</h2>
+  <p>Here is a checklist to get your Scout fully set up:</p>
+  <ul>
+    <li><strong>Complete registration.</strong> Fill out the Scouts BSA youth application. National, council, and troop fees are paid at registration.</li>
+    <li><strong>Submit the Annual Health and Medical Record.</strong> Parts A and B are required for participation. Part C (with a physician's signature) is required for events longer than 72 hours, including summer camp.</li>
+    <li><strong>Create a my.Scouting account.</strong> Parents can create one to access training and sign electronic forms.</li>
+    <li><strong>Get access to Scoutbook.</strong> The official tool for tracking advancement, events, and communications. Your troop will send an invite.</li>
+    <li><strong>Take Safeguarding Youth Training (SYT).</strong> Free and online (~30 minutes). Required for any adult at overnight events, and strongly recommended for every parent.</li>
+    <li><strong>Buy a Scouts BSA Handbook.</strong> Your Scout needs this book. Advancement is tracked and signed off inside it.</li>
+    <li><strong>Get the uniform.</strong> See Section 6. Most troops phase this in; do not feel pressure to buy everything at once.</li>
+    <li><strong>Subscribe to troop communications.</strong> Ask where the troop calendar lives and how meeting reminders go out.</li>
+    <li><strong>Attend a parent meeting.</strong> The committee meeting is usually the best place to meet other parents and learn how things run.</li>
+  </ul>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 5. MEETINGS -->
+<section class="chapter" id="meetings">
+  <h2>5. Meetings and the Troop Calendar</h2>
+
+  <h3>Weekly Troop Meetings</h3>
+  <p>Troop 800 meets on Tuesdays at 6:30 pm at Chula Vista Presbyterian Church, 940 Hilltop Drive. A typical meeting lasts about 90 minutes: opening ceremony, skills instruction or patrol time, a game or interpatrol activity, and a closing with announcements. Scouts should arrive in uniform, on time, with their handbook.</p>
+
+  <h3>Patrol Leaders' Council (PLC)</h3>
+  <p>The PLC is a monthly planning meeting of the youth leaders. This is where the actual program is planned &mdash; meeting topics, monthly campouts, service projects. Parents do not attend.</p>
+
+  <h3>Committee Meetings</h3>
+  <p>The troop committee (adults) meets monthly to handle the business side: finances, registration, transportation, adult training, equipment, and advancement records. Every parent is welcome.</p>
+
+  <h3>Courts of Honor</h3>
+  <p>A Court of Honor is a ceremony &mdash; usually two to four per year &mdash; where Scouts are formally recognized for ranks, merit badges, and other awards earned. Come; your Scout will want you there.</p>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 6. UNIFORM -->
+<section class="chapter" id="uniform">
+  <h2>6. The Uniform</h2>
+  <p>The uniform is one of the eight methods of Scouting. It is a visible reminder of membership and achievement and an equalizer among Scouts from different backgrounds.</p>
+
+  <h3>Field Uniform ("Class A")</h3>
+  <p>Worn at weekly meetings, travel to and from events, Courts of Honor, and flag ceremonies.</p>
+  <table>
+    <thead><tr><th>Item</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Scouts BSA uniform shirt</td><td>Tan short- or long-sleeved shirt with council and troop insignia sewn on. Buy a size up &mdash; Scouts grow fast.</td></tr>
+      <tr><td>Scout pants or shorts</td><td>Official green switchbacks are ideal but not mandatory in every troop. Ask what your troop requires.</td></tr>
+      <tr><td>Scout belt</td><td>Green webbing with a brass buckle.</td></tr>
+      <tr><td>Scout socks</td><td>Green, mid-calf. Required when wearing official shorts.</td></tr>
+      <tr><td>Neckerchief and slide</td><td>Usually issued by the troop in its own colors.</td></tr>
+      <tr><td>Merit Badge Sash</td><td>Worn over the right shoulder for Courts of Honor.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Activity Uniform ("Class B")</h3>
+  <p>A troop T-shirt with Scout pants or shorts, worn for campouts, service projects, and warmer activities. Your troop will usually sell these.</p>
+
+  <h3>Where to Buy</h3>
+  <ul>
+    <li>Your local Scout Shop (attached to most BSA council service centers)</li>
+    <li>scoutshop.org (official online store)</li>
+    <li>Troop closets &mdash; many troops keep a bin of outgrown uniforms to swap or hand down for free</li>
+  </ul>
+  <div class="callout"><strong>Tip.</strong> Have the council patch, troop numerals, and patrol patch sewn on BEFORE your Scout's first Court of Honor. Many troops have a parent volunteer who does this for a small fee.</div>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<div class="bp-quote">
+  A week of camp life is worth six months of theoretical teaching in the meeting room.
+  <span class="attr">&mdash; Robert Baden-Powell</span>
+</div>
+
+<!-- 7. OUTDOOR -->
+<section class="chapter" id="outdoor">
+  <h2>7. The Outdoor Program</h2>
+  <p>The outdoors is where Scouts BSA really happens. Expect about one campout a month plus a week of summer camp. Troops also pursue "high-adventure" trips as Scouts get older.</p>
+
+  <h3>Monthly Campouts</h3>
+  <p>Most monthly campouts leave Friday evening and return Sunday morning. Scouts camp by patrol, cook their own meals, and run their own program. Adults camp separately and keep a supportive distance.</p>
+
+  <h3>Summer Camp</h3>
+  <p>A full week at a council-run camp, typically in June or July. This is where a lot of advancement and merit badges happen. Register and pay early.</p>
+
+  <h3>High Adventure</h3>
+  <p>Older Scouts (usually 14+) can attend BSA's high-adventure bases: Philmont Scout Ranch (backpacking, NM), Northern Tier (canoeing, MN/Canada), Florida Sea Base (sailing/SCUBA, FL), and Summit Bechtel Reserve (WV). These require year(s) of advance planning, fundraising, and physical preparation.</p>
+
+  <h3>Standard Personal Gear</h3>
+  <ul>
+    <li>Sleeping bag rated for the coldest weather you expect</li>
+    <li>Sleeping pad</li>
+    <li>Backpack (start with a school-sized day pack; upgrade to a full backpacking pack before Philmont)</li>
+    <li>Mess kit, water bottle, flashlight or headlamp</li>
+    <li>Rain gear, sturdy shoes or boots, layers (cotton kills &mdash; favor wool and synthetics)</li>
+    <li>Scout Handbook and a pen</li>
+  </ul>
+  <div class="callout"><strong>Before the first campout.</strong> Your troop will provide a packing list. Pack it WITH your Scout, not FOR them. Part of the lesson is learning to be responsible for their own gear.</div>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 8. ADVANCEMENT -->
+<section class="chapter" id="advancement">
+  <h2>8. Advancement and Recognition</h2>
+  <p>Advancement in Scouts BSA is the Scout's responsibility, not the parent's and not the troop's. Your job is to encourage, not to push.</p>
+
+  <h3>The Seven Ranks</h3>
+  <table>
+    <thead><tr><th>Rank</th><th>Focus</th></tr></thead>
+    <tbody>
+      <tr><td>Scout</td><td>Joining rank. Basic knowledge of the Oath, Law, and how the troop works.</td></tr>
+      <tr><td>Tenderfoot</td><td>Basic outdoor skills, fitness, Scout spirit.</td></tr>
+      <tr><td>Second Class</td><td>More outdoor skills, navigation, first aid, cooking, service.</td></tr>
+      <tr><td>First Class</td><td>Core outdoor proficiency. A "First Class" Scout can camp independently. This is the foundation rank.</td></tr>
+      <tr><td>Star</td><td>Leadership role + 6 merit badges (4 Eagle-required). Begins the leadership journey.</td></tr>
+      <tr><td>Life</td><td>More time in leadership + more merit badges + significant service.</td></tr>
+      <tr><td>Eagle</td><td>Highest rank. 21 merit badges (13 Eagle-required), significant service project, board of review. Must be completed before the Scout's 18th birthday.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Merit Badges</h3>
+  <p>Merit badges are earned by working with a registered Merit Badge Counselor, using the official pamphlet for the badge. Scouts request a "blue card" from the Scoutmaster, work with the counselor on the requirements, and return the signed blue card. There are over 130 merit badges; many Scouts find a lifelong interest or career through one.</p>
+
+  <h3>Scoutmaster Conferences and Boards of Review</h3>
+  <p>Before a Scout earns a rank, they sit for a Scoutmaster Conference (a one-on-one conversation with the Scoutmaster) and a Board of Review (a conversation with three to six committee members). These are not tests &mdash; they are checkpoints to confirm the Scout has grown and is ready to advance.</p>
+
+  <div class="callout"><strong>Eagle Timeline.</strong> The single most common reason Scouts do not earn Eagle is running out of time. Everything must be completed BEFORE the 18th birthday. Most Eagles finish between 16 and 17.5. Plan backwards from your Scout's 18th birthday, not forward from today.</div>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<div class="bp-quote">
+  Try and leave this world a little better than you found it.
+  <span class="attr">&mdash; Robert Baden-Powell</span>
+</div>
+
+<!-- 9. SAFETY -->
+<section class="chapter" id="safety">
+  <h2>9. Safeguarding Youth and Safety</h2>
+  <p>Scouts BSA has some of the most robust youth-protection policies of any youth organization in the country. Every parent should understand the basics.</p>
+
+  <h3>Barriers to Abuse &mdash; the Key Rules</h3>
+  <ul>
+    <li><strong>Two-deep leadership.</strong> Two registered, SYT-trained adult leaders (one 21+) are required at every Scouting activity.</li>
+    <li><strong>No one-on-one contact.</strong> No one-on-one contact between adults and Scouts is allowed, in any form. Parents have full access to any communication between leaders and their Scout.</li>
+    <li><strong>Separate accommodations.</strong> Adults and Scouts tent separately; male and female Scouts tent separately; family members may tent with their own Scout only where policy permits.</li>
+    <li><strong>Privacy.</strong> Scouts have privacy rights when changing, showering, or using the bathroom.</li>
+    <li><strong>Mandatory reporting.</strong> Any suspected abuse &mdash; in Scouting or elsewhere &mdash; is reported to local authorities and to the Scouts First Helpline at 1-844-SCOUTS1 (1-844-726-8871).</li>
+  </ul>
+
+  <h3>Guide to Safe Scouting</h3>
+  <p>The Guide to Safe Scouting is the BSA's program-wide safety policy document, updated regularly. Your troop follows it. It is free online and worth skimming once.</p>
+
+  <h3>What You Should Do as a Parent</h3>
+  <ul>
+    <li>Take Safeguarding Youth Training &mdash; even if you never plan to attend an overnight event.</li>
+    <li>Ask the troop how they handle chaperoning, transportation, and communications.</li>
+    <li>Talk with your Scout openly. "Tell me about your weekend" goes a long way.</li>
+    <li>If something feels wrong, trust your gut. Report to the Scoutmaster, the Committee Chair, the council, or the Scouts First Helpline.</li>
+  </ul>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 10. COSTS -->
+<section class="chapter" id="costs">
+  <h2>10. What It Costs</h2>
+  <p>Scouts BSA is not free, but it is designed to be affordable and most troops help families who need it. Never let cost stop a Scout from participating &mdash; ask about scholarships or "campership" funds quietly; almost every troop has them.</p>
+
+  <h3>Typical Annual Costs</h3>
+  <table>
+    <thead><tr><th>Expense</th><th>Approximate Range</th></tr></thead>
+    <tbody>
+      <tr><td>National registration fee</td><td>Roughly $85/year (set by Scouting America; check current rate).</td></tr>
+      <tr><td>Council program fee</td><td>Varies by council &mdash; often $20&ndash;$60/year.</td></tr>
+      <tr><td>Troop dues</td><td>Often $100&ndash;$300/year to cover equipment, awards, and meeting supplies.</td></tr>
+      <tr><td>Scouts BSA Handbook</td><td>About $20, one-time.</td></tr>
+      <tr><td>Uniform (starter set)</td><td>Roughly $90&ndash;$180 depending on what the troop requires.</td></tr>
+      <tr><td>Monthly campout fees</td><td>Usually $15&ndash;$40 per Scout per campout.</td></tr>
+      <tr><td>Summer camp</td><td>Usually $400&ndash;$650 for a week.</td></tr>
+      <tr><td>High adventure</td><td>Philmont and similar run $1,500&ndash;$3,500+.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Fundraising</h3>
+  <p>Most troops run at least one fundraiser a year &mdash; popcorn sales, camp cards, wreaths, or similar. A portion of proceeds often goes into each participating Scout's individual "Scout account," which can be used to offset costs.</p>
+
+  <h3>Financial Help</h3>
+  <p>If cost is ever a barrier, talk to the Scoutmaster or Committee Chair confidentially. Councils offer camperships (scholarships for summer camp), and troops often have their own assistance funds. The program is committed to keeping Scouting accessible.</p>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 11. PARENT ROLE -->
+<section class="chapter" id="parent-role">
+  <h2>11. Your Role as a Parent</h2>
+  <p>Scouting works best when parents stay engaged but step back.</p>
+
+  <h3>Do</h3>
+  <ul>
+    <li>Get your Scout to meetings and campouts on time, in uniform, with the gear on the packing list.</li>
+    <li>Encourage advancement progress &mdash; but let your Scout drive it.</li>
+    <li>Attend Courts of Honor and celebrate their wins.</li>
+    <li>Take Safeguarding Youth Training.</li>
+    <li>Volunteer where you can.</li>
+    <li>Communicate with the Scoutmaster if your Scout is struggling, sick, injured, or going through something.</li>
+  </ul>
+
+  <h3>Don't</h3>
+  <ul>
+    <li>Hover over your Scout at meetings. Drop off, say hi, step back.</li>
+    <li>Track advancement for your Scout. It is their responsibility.</li>
+    <li>Jump in when your Scout has a problem with another Scout or a leader. Let them try first.</li>
+    <li>Compare your Scout's pace to another Scout's. The program is individualized on purpose.</li>
+  </ul>
+
+  <h3>Ways to Volunteer</h3>
+  <ul>
+    <li><strong>Committee member</strong> &mdash; finances, advancement, activities, membership, fundraising, equipment.</li>
+    <li><strong>Assistant Scoutmaster</strong> &mdash; active on the program side with the Scouts.</li>
+    <li><strong>Merit Badge Counselor</strong> &mdash; register to counsel merit badges in your area of expertise.</li>
+    <li><strong>Driver or event chaperone</strong> &mdash; every campout needs transportation.</li>
+    <li><strong>Behind-the-scenes</strong> &mdash; sewing patches, coordinating meals, maintaining the troop trailer, running the popcorn sale, taking photos.</li>
+  </ul>
+  <div class="callout"><strong>Training requirements.</strong> Every registered adult leader must complete Safeguarding Youth Training and, for most roles, position-specific training. Most training is free and online at my.scouting.org. California adult volunteers also complete California Mandated Reporter Training (AB 506) and a Live Scan.</div>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<div class="bp-quote">
+  The most worth-while thing is to try to put happiness into the lives of others.
+  <span class="attr">&mdash; Robert Baden-Powell</span>
+</div>
+
+<!-- 12. REGISTER -->
+<section class="chapter" id="register">
+  <h2>12. Registering as an Adult Volunteer (California / SDIC)</h2>
+  <p>Troop 800 asks that at least one parent or guardian from every family register as an adult volunteer. Adult registration in SDIC combines national Scouting America requirements with California's AB 506 compliance. Plan on roughly 3&ndash;4 hours of training plus one in-person Live Scan appointment.</p>
+
+  <h3>Step 1 &mdash; Complete Required Training</h3>
+  <ul>
+    <li><strong>Safeguarding Youth Training (SYT).</strong> Log in to my.scouting.org and complete the course (about 90 minutes). Save the completion certificate.</li>
+    <li><strong>California Mandated Reporter Training (AB 506).</strong> Complete the 2-hour "Volunteers" version at mandatedreporterca.com. Select "Scouting Volunteer" under the group section so the certificate is linked to SDIC.</li>
+  </ul>
+
+  <h3>Step 2 &mdash; Submit the Adult Application</h3>
+  <ul>
+    <li><strong>Online (preferred).</strong> Visit BeAScout.org, enter ZIP code 91911, find Troop 800, and click "Apply Now."</li>
+    <li><strong>Paper.</strong> Download the BSA Adult Application and Background Check Consent Form and return them to the Committee Chair.</li>
+  </ul>
+
+  <h3>Step 3 &mdash; Complete AB 506 Live Scan (Fingerprinting)</h3>
+  <ul>
+    <li><strong>Register for the scan.</strong> Use ApplicantServices.com/SDIC. Biometrics4All offers a discounted rate of approximately $41.</li>
+    <li><strong>Use the right form.</strong> You must use the council-specific Prefilled Live Scan Request form so results are routed to SDIC.</li>
+    <li><strong>Find a location.</strong> Use the California DOJ Location Finder. Bring a government-issued photo ID.</li>
+  </ul>
+
+  <h3>Step 4 &mdash; Final Documentation and Approval</h3>
+  <ul>
+    <li><strong>Upload your documents</strong> to the San Diego-Imperial Council portal.</li>
+    <li><strong>Notify the troop.</strong> Let Troop 800's COR know so they can approve your application in Application Manager.</li>
+  </ul>
+
+  <h3>Fees</h3>
+  <p>Annual adult membership with Scouting America is approximately $65, plus any local troop dues. The Live Scan fee is about $41 and is paid once. Some units reimburse the Live Scan fee.</p>
+
+  <div class="callout"><strong>Quick Links.</strong> SYT: my.scouting.org &bull; Mandated Reporter (AB 506): mandatedreporterca.com &bull; Adult Application: BeAScout.org &bull; Live Scan: ApplicantServices.com/SDIC &bull; SDIC Council: sdicscouting.org</div>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 13. TRAINING -->
+<section class="chapter" id="training">
+  <h2>13. Your Training Pathway &mdash; From Parent to Trained Leader</h2>
+  <div class="callout"><strong>Why "Trained" matters.</strong> Every registered adult has a role and must be officially "trained" for that role. Two-deep leadership on campouts requires two trained adults &mdash; so the more trained parents we have, the more activities Troop 800 can run.</div>
+
+  <h3>Stage 1 &mdash; Start with Committee Member Training</h3>
+  <ul>
+    <li><strong>Troop Committee Challenge / Committee Member Position-Specific Training.</strong> On my.scouting.org. Self-paced, 60&ndash;90 minutes.</li>
+    <li><strong>Read the Troop Committee Guidebook.</strong> A $10 paperback from the Scout Shop.</li>
+    <li><strong>Attend two committee meetings</strong> before picking a specific committee job.</li>
+  </ul>
+
+  <h3>Stage 2 &mdash; Choose Your Next Track</h3>
+  <h4>Track A: Program Side (Scoutmaster or Assistant Scoutmaster)</h4>
+  <ul>
+    <li><strong>Scoutmaster Position-Specific Training</strong> on my.scouting.org (~2 hours).</li>
+    <li><strong>Introduction to Outdoor Leader Skills (IOLS)</strong> &mdash; in-person weekend course. Required to be considered "trained" as an SM or ASM.</li>
+  </ul>
+
+  <h4>Track B: Merit Badge Counselor</h4>
+  <ul>
+    <li><strong>Merit Badge Counselor Orientation</strong> online, plus a separate Adult Application.</li>
+    <li><strong>Get approved by the council.</strong> Once approved, Scouts can request "blue cards" to work with you.</li>
+  </ul>
+
+  <h4>Track C: Activity-Specific Safety Certifications</h4>
+  <ul>
+    <li>Hazardous Weather Training (renew every two years)</li>
+    <li>Safe Swim Defense &mdash; required before swimming activities</li>
+    <li>Safety Afloat &mdash; required before boating activities</li>
+    <li>Climb On Safely &mdash; required before climbing/rappelling</li>
+    <li>Trek Safely &mdash; required before high-adventure backpacking</li>
+    <li>CPR / First Aid &mdash; American Red Cross or equivalent</li>
+    <li>Wilderness First Aid (WFA) &mdash; 16-hour course required for Philmont</li>
+  </ul>
+
+  <h3>Stage 3 &mdash; Advanced Leadership Training</h3>
+  <ul>
+    <li><strong>Wood Badge.</strong> Scouting America's flagship advanced leader training. Six days over two weekends plus a months-long "ticket."</li>
+    <li><strong>Powder Horn.</strong> High-adventure training for leaders.</li>
+    <li><strong>Trainer's EDGE.</strong> For adults who want to train other adults.</li>
+    <li><strong>NAYLE.</strong> Youth training, relevant for encouraging your Scout after NYLT.</li>
+  </ul>
+
+  <h3>Ongoing &mdash; Stay Plugged In</h3>
+  <ul>
+    <li>District Roundtable (monthly)</li>
+    <li>University of Scouting (annual one-day conference)</li>
+    <li>Renew SYT every two years</li>
+    <li>Watch the SDIC training calendar at sdicscouting.org</li>
+  </ul>
+
+  <h3>Rough Timeline</h3>
+  <table>
+    <thead><tr><th>Timeframe</th><th>Training / Milestone</th></tr></thead>
+    <tbody>
+      <tr><td>Month 1</td><td>SYT, AB 506, Live Scan, adult application.</td></tr>
+      <tr><td>Months 2&ndash;3</td><td>Committee Member Training. Attend two committee meetings.</td></tr>
+      <tr><td>Months 3&ndash;6</td><td>Pick your track and complete the position-specific course.</td></tr>
+      <tr><td>Months 6&ndash;12</td><td>Add Hazardous Weather, CPR/First Aid, and activity-specific certifications.</td></tr>
+      <tr><td>Year 1&ndash;2</td><td>IOLS if serving as ASM. Consider Wood Badge.</td></tr>
+      <tr><td>Year 2+</td><td>Wood Badge, Powder Horn, Trainer's EDGE, or Committee leadership roles.</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><strong>Not sure where to start?</strong> Email the Committee Chair (April Flores, r2d2april@outlook.com) or a new-parent liaison (Isabel Zuniga or Adrian Padilla) and tell them what you enjoy and how much time you can spare. There is always a role that fits.</div>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<div class="bp-quote">
+  Success in training the boy depends largely on the Scoutmaster's own personal example.
+  <span class="attr">&mdash; Robert Baden-Powell</span>
+</div>
+
+<!-- 14. COMMUNICATIONS -->
+<section class="chapter" id="comms">
+  <h2>14. How the Troop Communicates</h2>
+  <ul>
+    <li><strong>Scoutbook</strong> &mdash; official tool for advancement, event RSVPs, and leader-to-parent communication.</li>
+    <li><strong>Email</strong> &mdash; the weekly "what's happening" update.</li>
+    <li><strong>Troop website</strong> &mdash; calendar, forms, packing lists, and resources.</li>
+    <li><strong>Group messaging app</strong> &mdash; real-time updates. Troop 800 uses the Troop 800 Google Groups email list, Scoutbook Messenger, and the Band app.</li>
+  </ul>
+
+  <h3>Key Dates to Watch For</h3>
+  <ul>
+    <li>The annual program calendar, usually published in August or September</li>
+    <li>Summer camp sign-ups (often January&ndash;March)</li>
+    <li>Recharter season (usually in the fall)</li>
+    <li>Courts of Honor</li>
+    <li>Fundraiser kickoffs and deadlines</li>
+  </ul>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 15. FAQ -->
+<section class="chapter" id="faq">
+  <h2>15. Frequently Asked Questions</h2>
+
+  <h3>How is a troop different from a Cub Scout pack?</h3>
+  <p>A Cub Scout pack is parent-led &mdash; you sit with your Cub and help them through the program. A Scouts BSA troop is youth-led &mdash; the Scouts run things, and you step back. This shift is the single biggest surprise for crossover families. Give it time; it works.</p>
+
+  <h3>Can my Scout join mid-year?</h3>
+  <p>Yes. Scouts can join at any point between ages 11 and 17. Troops are set up to bring new Scouts in on a rolling basis.</p>
+
+  <h3>Is Troop 800 coed?</h3>
+  <p>Yes &mdash; Troop 800 is a coed troop, open to boys and girls ages 11 through 17. Per BSA youth-protection policy, sleeping arrangements on campouts are always separated by gender and adults tent separately from Scouts.</p>
+
+  <h3>What if my Scout does not want to go to a meeting or campout?</h3>
+  <p>This is normal, especially in the first few months. Encourage them to go anyway &mdash; the Scouts who stick it out through the first three to six months almost always end up loving it. Talk to the Scoutmaster if reluctance persists.</p>
+
+  <h3>How much time should I expect this to take?</h3>
+  <p>Plan on three weekly meetings (~90 minutes), one PLC meeting (~90 minutes) if your Scout is in a leadership position, one weekend campout a month, and one week of summer camp a year. Older Scouts in leadership roles or working toward Eagle will invest more.</p>
+
+  <h3>What is the Order of the Arrow?</h3>
+  <p>The OA is Scouting's honor society, open to Scouts elected by their peers after meeting camping requirements. Your Scout may be eligible after their first year.</p>
+
+  <h3>Does my Scout have to work toward Eagle?</h3>
+  <p>No. Eagle is a tremendous achievement, but the journey matters more than the destination. Many Scouts have great experiences at Star or Life rank. Let your Scout set the goal.</p>
+
+  <h3>What if we want to take a break or leave?</h3>
+  <p>Talk to the Scoutmaster. Scouts can take a leave of absence; recharter is yearly, so leaving simply means not re-registering. There are no penalties, and the door stays open.</p>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 16. GLOSSARY -->
+<section class="chapter" id="glossary">
+  <h2>16. Quick Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>AB 506</td><td>California law requiring Live Scan fingerprinting and mandated-reporter training for regular volunteers in youth-serving organizations.</td></tr>
+      <tr><td>Blue Card</td><td>The form used to track merit-badge progress.</td></tr>
+      <tr><td>BOR</td><td>Board of Review &mdash; the rank advancement conversation with committee members.</td></tr>
+      <tr><td>BSA</td><td>Boy Scouts of America &mdash; the legacy name of Scouting America.</td></tr>
+      <tr><td>Camporee</td><td>A district- or council-level weekend event bringing multiple troops together.</td></tr>
+      <tr><td>Charter</td><td>The annual registration of the troop with BSA through its chartered organization.</td></tr>
+      <tr><td>Council</td><td>The regional BSA body. Troop 800 is part of the San Diego-Imperial Council (SDIC).</td></tr>
+      <tr><td>Court of Honor</td><td>Ceremony recognizing ranks and awards.</td></tr>
+      <tr><td>District</td><td>A subdivision of a council.</td></tr>
+      <tr><td>Eagle Project</td><td>The service project required for the Eagle Scout rank.</td></tr>
+      <tr><td>Grubmaster</td><td>The Scout responsible for planning and buying a patrol's meals on a campout.</td></tr>
+      <tr><td>IOLS</td><td>Introduction to Outdoor Leader Skills &mdash; required for SM/ASM to be "trained."</td></tr>
+      <tr><td>Jamboree</td><td>A large multi-year national or world Scouting gathering.</td></tr>
+      <tr><td>Live Scan</td><td>California's digital fingerprinting process used for AB 506 background checks.</td></tr>
+      <tr><td>OA</td><td>Order of the Arrow &mdash; Scouting's honor society.</td></tr>
+      <tr><td>Patrol</td><td>A group of 6&ndash;8 Scouts who camp, cook, and compete together.</td></tr>
+      <tr><td>PLC</td><td>Patrol Leaders' Council &mdash; the youth leadership's planning meeting.</td></tr>
+      <tr><td>Recharter</td><td>Annual renewal of troop registration.</td></tr>
+      <tr><td>Scoutbook</td><td>The official BSA app for advancement and communications.</td></tr>
+      <tr><td>SDIC</td><td>San Diego-Imperial Council.</td></tr>
+      <tr><td>SM</td><td>Scoutmaster.</td></tr>
+      <tr><td>SPL</td><td>Senior Patrol Leader &mdash; the top youth leader.</td></tr>
+      <tr><td>SYT</td><td>Safeguarding Youth Training (formerly YPT).</td></tr>
+      <tr><td>Troop</td><td>A Scouts BSA unit of Scouts ages 11&ndash;17.</td></tr>
+      <tr><td>WFA</td><td>Wilderness First Aid &mdash; 16-hour certification required for most high-adventure trips.</td></tr>
+      <tr><td>Wood Badge</td><td>Scouting America's flagship advanced adult leadership training.</td></tr>
+    </tbody>
+  </table>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<!-- 17. CONTACTS -->
+<section class="chapter" id="contacts">
+  <h2>17. Our Troop &mdash; Key Contacts</h2>
+  <table>
+    <thead><tr><th>Role / Item</th><th>Name / Detail</th></tr></thead>
+    <tbody>
+      <tr><td>Troop number</td><td>800 (coed Troop)</td></tr>
+      <tr><td>Chartered organization</td><td>Chula Vista Presbyterian Church (CVPC)</td></tr>
+      <tr><td>Meeting location</td><td>940 Hilltop Drive, Chula Vista, CA 91911</td></tr>
+      <tr><td>Meeting day and time</td><td>Tuesdays at 6:30 pm</td></tr>
+      <tr><td>Council</td><td>San Diego-Imperial Council (SDIC) &mdash; <a href="https://sdicscouting.org">sdicscouting.org</a></td></tr>
+      <tr><td>Scoutmaster</td><td>Mrs. Giselle Pikes &mdash; <a href="mailto:giselle.pikes@outlook.com">giselle.pikes@outlook.com</a></td></tr>
+      <tr><td>Committee Chair</td><td>Mrs. April Flores &mdash; <a href="mailto:r2d2april@outlook.com">r2d2april@outlook.com</a></td></tr>
+      <tr><td>Chartered Organization Rep. (COR)</td><td>Bill Sears &mdash; <a href="mailto:billcsears@gmail.com">billcsears@gmail.com</a></td></tr>
+      <tr><td>New-parent liaison</td><td>Isabel Zuniga (<a href="mailto:isabelzuniga@yahoo.com">isabelzuniga@yahoo.com</a>) and Adrian Padilla (<a href="mailto:agpadilla@gmail.com">agpadilla@gmail.com</a>)</td></tr>
+      <tr><td>Treasurer</td><td>Lizzeth Fermin &mdash; <a href="mailto:lizyar@yahoo.com">lizyar@yahoo.com</a></td></tr>
+      <tr><td>Advancement chair</td><td>Benjamin Flores &mdash; <a href="mailto:stemscoutdad@gmail.com">stemscoutdad@gmail.com</a></td></tr>
+      <tr><td>Troop website</td><td><a href="https://www.bsatroop800cv.org/">bsatroop800cv.org</a></td></tr>
+      <tr><td>Facebook page</td><td><a href="https://www.facebook.com/profile.php?id=100089981453066">Troop 800 on Facebook</a></td></tr>
+      <tr><td>Primary communication channels</td><td>Google email and the Band app</td></tr>
+      <tr><td>Council phone / email</td><td>+1 (619) 298-6121 &mdash; <a href="mailto:sdiccommunications@scouting.org">sdiccommunications@scouting.org</a></td></tr>
+      <tr><td>Emergency contact</td><td>Listed on the activity email or provided by the point of contact (POC) for the specific activity</td></tr>
+    </tbody>
+  </table>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+<div class="bp-quote">
+  The real way to gain happiness is to give it to others.
+  <span class="attr">&mdash; Robert Baden-Powell</span>
+</div>
+
+<section class="chapter">
+  <h2>A Final Note</h2>
+  <p>The first few months will feel unfamiliar. Lean on the troop &mdash; ask questions, volunteer to drive, attend a committee meeting, come to Courts of Honor. Most of what makes a troop great comes from engaged parents who trust the program and support their Scouts without running the show.</p>
+  <p><strong>Welcome to Scouting. You're in for a great ride.</strong></p>
+  <button type="button" class="section-back" data-target="top"><span class="arrow">&larr;</span> Back to Sections</button>
+</section>
+
+</main>
+
+<script>
+  // Handle all in-page navigation via data-target (no hash changes, so no
+  // sandbox/iframe "external link" prompt).
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-target]');
+    if (!el) return;
+    e.preventDefault();
+    var t = el.getAttribute('data-target');
+    if (t === 'top' || t === '') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    var target = document.getElementById(t);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+</script>
+
+<footer>
+  <div class="motto">BE PREPARED</div>
+  <div>Troop 800 &bull; Chula Vista, CA &bull; Chartered by Chula Vista Presbyterian Church</div>
+  <div style="margin-top:8px;opacity:0.7;font-size:0.85rem;">San Diego-Imperial Council (SDIC)</div>
+</footer>
+
+</body>
+</html>
